@@ -1,17 +1,43 @@
 aid: sonothera
 name: SonoThera
-description: 'SonoThera is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  SonoThera, Inc. is a privately held, clinical-stage biotechnology company headquartered at 201
+  Haskins Way in South San Francisco, California, founded in 2022 to make genetic medicine
+  deliverable without a viral vector. Its RIPPLE platform pairs an intravenously administered
+  lipid-and-microbubble formulation with an externally applied diagnostic ultrasound probe: the
+  acoustic energy transiently permeabilizes cell membranes in the targeted organ so a nucleic-acid
+  payload enters only where the probe is pointed, an approach built on the roughly 35 million
+  ultrasound contrast-agent doses given safely each year in cardiac imaging. A companion payload
+  engineering platform, PORE, carries DNA and RNA constructs, gene editing and gene silencing
+  cargo of varied size and format. The company holds an exclusive license to GE HealthCare's
+  Optison and Sonazoid microbubble products for use with the platform, and has raised
+  approximately $186 million — a $60.75 million Series A and an oversubscribed $125 million
+  Series B — from ARCH Venture Partners, Johnson & Johnson, Illumina Ventures and Eli Lilly, to
+  push lead programs in Duchenne muscular dystrophy and autosomal dominant polycystic kidney
+  disease into the clinic, with preclinical work in Alport syndrome and hemophilia A. It was
+  co-founded by Kenneth Greenberg (CEO), Steve Feinstein (Chief Scientific Officer) and
+  Michael H. Davidson (Executive Chairman). SonoThera sells therapeutics, not software: it runs no
+  developer program, publishes no API, SDK or machine-readable specification, and maintains no
+  public source-code organization.
 url: https://raw.githubusercontent.com/api-evangelist/sonothera/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment-pipeline
 specificationVersion: '0.20'
 created: '2026-08-28'
 modified: '2026-08-28'
 tags:
 - Company
+- Biotechnology
+- Pharmaceuticals
+- Gene Therapy
+- Genetic Medicine
+- Drug Delivery
+- Ultrasound
+- Life Sciences
+- Clinical Trials
+- Rare Disease
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +45,57 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/sonothera-domain-security.yml
 - type: Website
-  url: https://www.nasdaqprivatemarket.com/
+  url: https://sonothera.com/
+- type: About
+  url: https://sonothera.com/about-us/
+- type: Research
+  url: https://sonothera.com/science/
+- type: News
+  url: https://sonothera.com/news/
+- type: Careers
+  url: https://sonothera.com/careers/
+- type: Contact
+  url: https://sonothera.com/contact-us/
+- type: Support
+  url: https://sonothera.com/contact-us/
+- type: LinkedIn
+  url: https://www.linkedin.com/company/sonothera
+- type: LLMsTxt
+  url: llms/sonothera-llms.txt
+x-enrichment:
+  date: '2026-08-28'
+  status: minimal
+  artifacts_added: 3
+  pass: local-v1
+x-coverage:
+  state: none
+  reason: not-a-software-company
+  detail: >-
+    SonoThera is a clinical-stage, ultrasound-mediated gene therapy company founded in 2022 whose
+    product is a preclinical drug pipeline (DMD and ADPKD), not software — sonothera.com is a
+    seven-page WordPress marketing site on WP Engine with no developer, docs or API section, every
+    contract-discovery path (/openapi.json, /swagger.json, /api-docs, /docs, /api, /developers) and
+    every /.well-known/* path returns a real 404, api./dev./docs./developer./mcp..sonothera.com are
+    NXDOMAIN rather than wildcarded, and api.github.com/orgs/sonothera 404s, so there is no
+    organization, package or specification anywhere to harvest.
+  evidence:
+  - url: https://sonothera.com/
+    status: 200
+  - url: https://sonothera.com/openapi.json
+    status: 404
+  - url: https://sonothera.com/api-docs
+    status: 404
+  - url: https://sonothera.com/developers
+    status: 404
+  - url: https://sonothera.com/.well-known/security.txt
+    status: 404
+  - url: https://sonothera.com/.well-known/agent-card.json
+    status: 404
+  - url: https://sonothera.com/llms.txt
+    status: 404
+  - url: https://api.github.com/orgs/sonothera
+    status: 404
+  checked: '2026-08-28'

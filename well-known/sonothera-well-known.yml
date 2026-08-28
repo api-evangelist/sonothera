@@ -1,0 +1,103 @@
+generated: '2026-08-28'
+method: probed
+source: live HTTP probes of sonothera.com and www.sonothera.com
+note: >-
+  No /.well-known document was served by any SonoThera host, so NO WellKnown and NO SecurityTxt
+  pointer is wired in apis.yml — this file records an absence, not a presence. sonothera.com is a
+  WordPress site (Yoast SEO) served from WP Engine behind Cloudflare; every /.well-known/* path
+  returns a real 404 (the Yoast-branded WordPress 404 template for most paths, an nginx
+  "404 Not Found" body for /.well-known/security.txt). www.sonothera.com 301-redirects every path
+  to the apex, so it serves no documents of its own. There are no developer subdomains to probe:
+  api., dev., docs., developer. and mcp..sonothera.com are all NXDOMAIN — not wildcarded, simply
+  absent. Late in the probe run the Cloudflare edge began answering unrecognized user agents with
+  a "Sorry, you have been blocked" challenge page; the status rows below were all captured before
+  that, with a browser User-Agent, and are what the origin actually returned.
+hosts:
+- host: https://sonothera.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    content_type: text/html
+    note: nginx "404 Not Found" body — not a document
+  - path: /.well-known/openid-configuration
+    status: 404
+    content_type: text/html
+    note: WordPress 404 template — not a document
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    content_type: text/html
+    note: WordPress 404 template — not a document
+  - path: /.well-known/api-catalog
+    status: 404
+    content_type: text/html
+    note: WordPress 404 template — not a document
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    content_type: text/html
+    note: WordPress 404 template — not a document
+  - path: /.well-known/agent-card.json
+    status: 404
+    content_type: text/html
+    note: A2A probe — no agent card served
+  - path: /.well-known/agent.json
+    status: 404
+    content_type: text/html
+    note: A2A legacy-path probe — no agent card served
+- host: https://www.sonothera.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 301
+    content_type: text/html
+    note: redirects to the apex host; serves no document of its own
+  - path: /.well-known/openid-configuration
+    status: 301
+    content_type: text/html
+  - path: /.well-known/oauth-authorization-server
+    status: 301
+    content_type: text/html
+  - path: /.well-known/api-catalog
+    status: 301
+    content_type: text/html
+  - path: /.well-known/ai-plugin.json
+    status: 301
+    content_type: text/html
+x-evidence:
+  fetched: '2026-08-28'
+  hosts_probed:
+  - sonothera.com
+  - www.sonothera.com
+  contract_discovery:
+  - url: https://sonothera.com/openapi.json
+    status: 404
+  - url: https://sonothera.com/openapi.yaml
+    status: 404
+  - url: https://sonothera.com/swagger.json
+    status: 404
+  - url: https://sonothera.com/api-docs
+    status: 404
+  - url: https://sonothera.com/docs
+    status: 404
+  - url: https://sonothera.com/api
+    status: 404
+  - url: https://sonothera.com/developers
+    status: 404
+  - url: https://sonothera.com/developer
+    status: 404
+  other_paths:
+  - url: https://sonothera.com/
+    status: 200
+  - url: https://sonothera.com/robots.txt
+    status: 200
+  - url: https://sonothera.com/sitemap.xml
+    status: 200
+  - url: https://sonothera.com/llms.txt
+    status: 404
+  - url: https://www.sonothera.com/llms.txt
+    status: 301
+  - url: https://api.github.com/orgs/sonothera
+    status: 404
+  subdomains:
+    note: >-
+      api., dev., docs., developer. and mcp..sonothera.com all return NXDOMAIN — SonoThera
+      operates no developer, documentation or API host. www.sonothera.com is a CNAME to
+      wp.wpenginepowered.com (141.193.213.10) and 301s to the apex.
