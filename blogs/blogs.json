@@ -1,0 +1,14 @@
+{
+  "repo": "sonothera",
+  "feeds": [
+    {
+      "source": "https://sonothera.com/feed/",
+      "feed_url": "https://sonothera.com/feed/",
+      "title": "",
+      "saved": 2,
+      "method": "feed"
+    }
+  ],
+  "post_count": 2,
+  "fetched": "2026-10-10T13:15:00Z"
+}
